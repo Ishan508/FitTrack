@@ -1,0 +1,390 @@
+:root {
+    /* Colors */
+    --bg-app: #0a0a0a;
+    --bg-card: #161616;
+    --bg-input: #202020;
+
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #666666;
+
+    --primary: #00E676;
+    /* Neon Green */
+    --primary-dim: rgba(0, 230, 118, 0.1);
+    --accent: #2979FF;
+    /* Bright Blue */
+    --accent-dim: rgba(41, 121, 255, 0.1);
+
+    --danger: #FF5252;
+    --success: #00E676;
+    --warning: #FFAB40;
+
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    line-height: 1.5;
+    height: 100vh;
+    overflow: hidden;
+    /* App-like feel */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+/* Layout */
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 600px;
+    /* Desktop constraint */
+    margin: 0 auto;
+    background-color: var(--bg-app);
+    position: relative;
+    width: 100%;
+}
+
+.app-header {
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.date-display {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+#main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-md);
+    padding-bottom: 80px;
+    /* Space for nav */
+}
+
+/* Bottom Nav */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: var(--bg-card);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.nav-item i {
+    font-size: 24px;
+}
+
+.nav-item.active {
+    color: var(--primary);
+}
+
+/* Components */
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    width: 100%;
+    gap: var(--space-sm);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #000;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+}
+
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.input-group {
+    margin-bottom: var(--space-md);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    background-color: #252525;
+}
+
+/* Progress Bars */
+.progress-container {
+    background-color: var(--bg-input);
+    height: 8px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-top: var(--space-xs);
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+}
+
+.progress-bar.blue {
+    background-color: var(--accent);
+}
+
+.progress-bar.red {
+    background-color: var(--danger);
+}
+
+.progress-bar.orange {
+    background-color: var(--warning);
+}
+
+/* Dashboard Specifics */
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: var(--space-xs) 0;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* List Items */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+}
+
+.list-item-content h4 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.list-item-content p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Floating Action Button (Optional) */
+.fab {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Modal */
+.hidden {
+    display: none !important;
+}
+
+.modal-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    /* Bottom sheet on mobile */
+    justify-content: center;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--bg-card);
+    width: 100%;
+    max-width: 600px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: var(--space-lg);
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 600px) {
+    .modal-container {
+        align-items: center;
+    }
+
+    .modal-content {
+        border-radius: var(--radius-lg);
+    }
+}
