@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Your Fitness Journey</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+
+<body>
+
+    <!-- Floating Blobs for Atmosphere -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div id="landing-app">
+        <!-- Header -->
+        <nav class="landing-nav">
+            <div class="logo">
+                <i class="ph-fill ph-barbell"></i>
+                <span>FitTrack Pro</span>
+            </div>
+            <div>
+                <button class="btn btn-secondary" style="width: auto; padding: 10px 20px;"
+                    onclick="window.location.href='index.html'">
+                    Login / App
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero-container">
+            <!-- Text Content -->
+            <div class="hero-text">
+                <div class="date-display" style="display: inline-block; margin-bottom: 16px;">
+                    v2.0 • Desktop Optimized
+                </div>
+                <h1 class="hero-headline">
+                    Track workouts &<br>meals — stay fit<br>with FitTrack.
+                </h1>
+                <p class="hero-subline">
+                    The liquid-smooth fitness companion that respects your privacy.
+                    No clutter, just gains. Start your journey today with our premium dashboard.
+                </p>
+                <div class="cta-group">
+                    <button class="btn btn-primary btn-large" onclick="window.location.href='index.html'">
+                        <i class="ph-bold ph-play"></i> Start Your Workout
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="window.location.href='index.html'">
+                        <i class="ph-bold ph-google-logo"></i> Sync Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visual / Phone Mockup -->
+            <div class="hero-visual"
+                style="display: flex; justify-content: center; align-items: center; min-height: 500px;">
+
+                <!-- Center Abstract Glass Circle -->
+                <div
+                    style="width: 300px; height: 300px; background: var(--glass-surface); border-radius: 50%; backdrop-filter: blur(20px); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); display: flex; align-items: center; justify-content: center;">
+                    <i class="ph-duotone ph-chart-polar"
+                        style="font-size: 120px; opacity: 0.8; color: var(--accent);"></i>
+                </div>
+
+                <!-- Floating Detail Cards (Decoration) -->
+                <div class="card"
+                    style="position: absolute; top: 100px; left: -20px; width: 180px; padding: 16px; transform: rotate(-10deg); z-index: 3; animation: float 5s ease-in-out infinite 1s;">
+                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+                        <div
+                            style="background: rgba(48, 209, 88, 0.2); padding: 8px; border-radius: 50%; color: #30d158;">
+                            <i class="ph-fill ph-fire"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 12px; color: #888;">Calories</div>
+                            <div style="font-weight: bold;">1,420</div>
+                        </div>
+                    </div>
+                    <div class="progress-container" style="height: 4px;">
+                        <div class="progress-bar orange" style="width: 65%;"></div>
+                    </div>
+                </div>
+
+                <div class="card"
+                    style="position: absolute; bottom: 80px; right: -20px; width: 160px; padding: 16px; transform: rotate(5deg); z-index: 3; animation: float 6s ease-in-out infinite 0.5s;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div
+                            style="background: rgba(10, 132, 255, 0.2); padding: 8px; border-radius: 50%; color: #0a84ff;">
+                            <i class="ph-fill ph-barbell"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 12px; color: #888;">Status</div>
+                            <div style="font-weight: bold; color: #fff;">Active</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer
+            style="margin-top: auto; text-align: center; color: var(--text-secondary); font-size: 12px; padding-top: 40px;">
+            &copy; 2025 FitTrack Pro. Crafted with Liquid Glass.
+        </footer>
+    </div>
+
+</body>
+
+</html>
