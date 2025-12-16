@@ -198,6 +198,7 @@ const modalBackdrop = document.querySelector('.modal-backdrop');
 
 // --- Initialization ---
 function init() {
+    setupEventListeners();
     updateDateDisplay();
 
     // Auth Listener
@@ -207,12 +208,17 @@ function init() {
                 userUid = user.uid;
                 console.log("User signed in:", userUid);
                 setupRealtimeListeners(); // Start listening to data
+
+                // If we were on login view, switch to dashboard
+                if (currentView === 'login') {
+                    switchView('dashboard');
+                } else {
+                    renderView(currentView);
+                }
             } else {
-                console.log("Signing in anonymously...");
-                auth.signInAnonymously().catch((error) => {
-                    console.error("Auth Error:", error);
-                    alert("Authentication failed. App needs internet for first run.");
-                });
+                console.log("No user signed in.");
+                userUid = null;
+                renderView('login');
             }
         });
     } else {
@@ -221,8 +227,6 @@ function init() {
             <p>Please open <code>js/app.js</code> and paste your Firebase Config.</p>
         </div>`;
     }
-
-    setupEventListeners();
 }
 
 function setupRealtimeListeners() {
@@ -234,17 +238,17 @@ function setupRealtimeListeners() {
     // Subscribe to new date
     unsubscribeWorkouts = Store.subscribeToWorkouts(currentDate, (workouts) => {
         cachedWorkouts = workouts;
-        renderView(currentView); // Re-render current view with new data
+        if (currentView !== 'login') renderView(currentView);
     });
 
     unsubscribeMeals = Store.subscribeToMeals(currentDate, (meals) => {
         cachedMeals = meals;
-        renderView(currentView);
+        if (currentView !== 'login') renderView(currentView);
     });
 
     unsubscribeTargets = Store.subscribeToTargets((targets) => {
         cachedTargets = targets;
-        renderView(currentView);
+        if (currentView !== 'login') renderView(currentView);
     });
 }
 
@@ -305,6 +309,16 @@ function setupEventListeners() {
             switchView('nutrition');
             return;
         }
+
+        // Login Page Actions
+        if (target.closest('#btn-login-google')) {
+            signInWithGoogle();
+            return;
+        }
+        if (target.closest('#btn-login-guest')) {
+            auth.signInAnonymously();
+            return;
+        }
     });
 
     // Global Form Submission Delegation
@@ -334,6 +348,16 @@ function switchView(view) {
         else item.classList.remove('active');
     });
 
+    // Toggle Nav Bar visibility
+    const navBar = document.querySelector('.bottom-nav');
+    if (view === 'login') {
+        navBar.style.display = 'none';
+        document.querySelector('.app-header').style.display = 'none';
+    } else {
+        navBar.style.display = 'flex';
+        document.querySelector('.app-header').style.display = 'flex';
+    }
+
     renderView(view);
 }
 
@@ -343,6 +367,9 @@ function renderView(view) {
     mainContent.innerHTML = ''; // Clear current content
 
     switch (view) {
+        case 'login':
+            renderLogin();
+            break;
         case 'dashboard':
             renderDashboard();
             break;
@@ -356,6 +383,42 @@ function renderView(view) {
             renderHistory();
             break;
     }
+}
+
+// 0. Login / Landing Page
+function renderLogin() {
+    // Hide nav and header specifically for this logic is handled in switchView,
+    // but we ensure clean verify here if needed.
+    const html = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; text-align: center;">
+            <div style="background: rgba(0, 230, 118, 0.1); padding: 24px; border-radius: 50%; margin-bottom: 24px;">
+                <i class="ph-fill ph-barbell" style="font-size: 64px; color: var(--primary);"></i>
+            </div>
+            <h1 style="font-size: 32px; margin-bottom: 8px;">FitTrack Pro</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 48px; max-width: 280px;">
+                Your personal minimalistic fitness and nutrition companion.
+            </p>
+
+            <div style="width: 100%; max-width: 300px; display: flex; flex-direction: column; gap: 16px;">
+                <button id="btn-login-google" class="btn" style="background: white; color: black; position: relative;">
+                    <i class="ph-bold ph-google-logo" style="position: absolute; left: 16px;"></i>
+                    Sign In with Google
+                </button>
+                <button id="btn-login-guest" class="btn btn-secondary">
+                    Continue as Guest
+                </button>
+            </div>
+
+            <p style="margin-top: 24px; font-size: 12px; color: var(--text-secondary);">
+                Multi-user supported. Your data is private.
+            </p>
+        </div>
+    `;
+    mainContent.innerHTML = html;
+
+    // Ensure Nav is Hidden (Redundant safety)
+    document.querySelector('.bottom-nav').style.display = 'none';
+    document.querySelector('.app-header').style.display = 'none';
 }
 
 // Helper to calculate summary from cached data
