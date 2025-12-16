@@ -60,12 +60,14 @@ const FOODS = [
 /* --- FIREBASE CONFIGURATION --- */
 // REPLACE THIS WITH YOUR FIREBASE CONFIG
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY_HERE",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBT2AiPOG--4rqLS2NhMpaoXBxz_lCIhlg",
+  authDomain: "fittrack-pro-39472.firebaseapp.com",
+  databaseURL: "https://fittrack-pro-39472-default-rtdb.firebaseio.com",
+  projectId: "fittrack-pro-39472",
+  storageBucket: "fittrack-pro-39472.firebasestorage.app",
+  messagingSenderId: "100894476922",
+  appId: "1:100894476922:web:ee40878358ee247b5c89c3",
+  measurementId: "G-S5JF11ZQB0"
 };
 
 // Initialize Firebase
@@ -653,3 +655,4 @@ function closeModal() {
 
 // Start App
 init();
+
