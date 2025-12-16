@@ -6,6 +6,7 @@ const EXERCISES = [
     { id: 'e3', name: 'Incline Dumbbell Press', muscle: 'Chest', type: 'Strength' },
     { id: 'e4', name: 'Chest Fly', muscle: 'Chest', type: 'Strength' },
     { id: 'e5', name: 'Cable Fly', muscle: 'Chest', type: 'Strength' },
+    { id: 'e6', name: 'kuldeep', muscle: 'Chest', type: 'Strength' },
 
 
     // Back
@@ -761,4 +762,5 @@ function closeModal() {
 
 // Start App
 init();
+
 
