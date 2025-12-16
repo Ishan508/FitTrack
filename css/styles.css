@@ -21,10 +21,11 @@
     --nav-height: 80px;
 
     /* Dark Gradient Base */
-    --grad-1: rgba(46, 196, 182, 0.3);
-    --grad-2: rgba(255, 159, 28, 0.15);
+    --grad-1: rgba(32, 46, 45, 0.3);
+    --grad-2: rgba(237, 234, 229, 0.15);
     --grad-3: rgba(46, 196, 182, 0.1);
 }
+
 
 @media (prefers-color-scheme: light) {
     :root {
@@ -510,3 +511,4 @@ select:focus {
         opacity: 1;
     }
 }
+
