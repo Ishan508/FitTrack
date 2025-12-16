@@ -5,12 +5,15 @@ const EXERCISES = [
     { id: 'e2', name: 'Push Ups', muscle: 'Chest', type: 'Strength' },
     { id: 'e3', name: 'Incline Dumbbell Press', muscle: 'Chest', type: 'Strength' },
     { id: 'e4', name: 'Chest Fly', muscle: 'Chest', type: 'Strength' },
+    { id: 'e5', name: 'Cable Fly', muscle: 'Chest', type: 'Strength' },
+
 
     // Back
     { id: 'e5', name: 'Pull Ups', muscle: 'Back', type: 'Strength' },
     { id: 'e6', name: 'Lat Pulldown', muscle: 'Back', type: 'Strength' },
     { id: 'e7', name: 'Deadlift', muscle: 'Back', type: 'Strength' },
     { id: 'e8', name: 'Bent Over Row', muscle: 'Back', type: 'Strength' },
+     { id: 'e9', name: 'T-bar', muscle: 'Back', type: 'Strength' },
 
     // Legs
     { id: 'e9', name: 'Squat', muscle: 'Legs', type: 'Strength' },
@@ -758,3 +761,4 @@ function closeModal() {
 
 // Start App
 init();
+
